@@ -1,8 +1,32 @@
 {
   "$schema": "https://json.schemastore.org/nest-cli",
   "collection": "@nestjs/schematics",
-  "sourceRoot": "src",
+  "sourceRoot": "apps/movie/src",
   "compilerOptions": {
-    "deleteOutDir": true
+    "deleteOutDir": true,
+    "webpack": true,
+    "tsConfigPath": "apps/movie/tsconfig.app.json"
+  },
+  "monorepo": true,
+  "root": "apps/movie",
+  "projects": {
+    "movie": {
+      "type": "application",
+      "root": "apps/movie",
+      "entryFile": "main",
+      "sourceRoot": "apps/movie/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/movie/tsconfig.app.json"
+      }
+    },
+    "movie-batch": {
+      "type": "application",
+      "root": "apps/movie-batch",
+      "entryFile": "main",
+      "sourceRoot": "apps/movie-batch/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/movie-batch/tsconfig.app.json"
+      }
+    }
   }
 }
